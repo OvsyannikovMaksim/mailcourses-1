@@ -23,8 +23,8 @@ public class FragmentList extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
 
-        ItemRep.add();
-        mAdapter.notifyDataSetChanged();
+        int position = ItemRep.add();
+        mAdapter.notifyItemInserted(position);
     }
 
     public interface IListener{
