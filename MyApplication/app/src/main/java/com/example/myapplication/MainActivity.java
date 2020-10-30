@@ -16,18 +16,6 @@ public class MainActivity extends AppCompatActivity implements FragmentList.ILis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        if (savedInstanceState == null) {
-            Log.d("123123!!!","If savedInstanceState fragment == null");
-
-        }
-        else{
-
-            int amount = savedInstanceState.getInt(FL_TAG);
-            ItemRep.newInstance(amount);
-            Log.d("123123!!!",""+amount);
-
-        }
     }
 
     protected void showDetails(Item item) {

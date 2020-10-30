@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,8 +66,17 @@ public class FragmentList extends Fragment implements View.OnClickListener{
 
         GridLayoutManager mLayout = new GridLayoutManager(getActivity(), getScreenOrientation(), LinearLayoutManager.VERTICAL, false);
         mAdapter=new Adapter(ItemRep.getInstance().list(), new ClickChecker());
-        recycler.setAdapter(mAdapter);
-        recycler.setLayoutManager(mLayout);
+        if (savedInstanceState!=null){
+            int amount = savedInstanceState.getInt(FL_TAG);
+            ItemRep.newInstance(amount);
+            mAdapter.notifyDataSetChanged();
+            recycler.setAdapter(mAdapter);
+            recycler.setLayoutManager(mLayout);
+        }
+        else {
+            recycler.setAdapter(mAdapter);
+            recycler.setLayoutManager(mLayout);
+        }
     }
 
     @Override
@@ -88,8 +98,7 @@ public class FragmentList extends Fragment implements View.OnClickListener{
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);
-
-        savedInstanceState.putInt(FL_TAG, ItemRep.getInstance().list().size());
+        savedInstanceState.putInt(FL_TAG, ItemRep.getInstance().size());
     }
 
     class ClickChecker implements ViewHolder.IListener{

@@ -42,6 +42,10 @@ public class ItemRep {
         return mData;
     }
 
+    public int size() {
+        return mData.size();
+    }
+
     // получить элемент по индексу
     public Item item(int index) {
         return mData.get(index);
