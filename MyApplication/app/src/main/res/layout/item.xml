@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
+    android:layout_height="@dimen/item_height"
     android:background="@color/white"
+    android:minWidth="@dimen/min_item_width"
 
     tools:context=".MainActivity"
     tools:ignore="ExtraText">
@@ -17,6 +18,6 @@
         android:background="@color/teal_700"
         android:gravity="center"
         tools:text="Random Name"
-        android:layout_margin="5dp"
+        android:layout_margin="@dimen/item_margin"
         />
 </RelativeLayout>

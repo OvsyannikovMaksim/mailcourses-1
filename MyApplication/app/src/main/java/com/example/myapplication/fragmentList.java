@@ -15,21 +15,21 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class fragmentList extends Fragment implements View.OnClickListener{
+public class FragmentList extends Fragment implements View.OnClickListener{
 
-
+    protected static final String FL_TAG = "FL_TAG";
 
 
     @Override
     public void onClick(View v) {
 
-        itemRep.add();
+        ItemRep.add();
         mAdapter.notifyDataSetChanged();
     }
 
     public interface IListener{
 
-        public void onClicked(item item);
+        public void onClicked(Item item);
 
     }
 
@@ -64,7 +64,7 @@ public class fragmentList extends Fragment implements View.OnClickListener{
         final RecyclerView recycler = view.findViewById(R.id.recycler);
 
         GridLayoutManager mLayout = new GridLayoutManager(getActivity(), getScreenOrientation(), LinearLayoutManager.VERTICAL, false);
-        mAdapter=new Adapter(itemRep.getInstance().list(), new ClickChecker());
+        mAdapter=new Adapter(ItemRep.getInstance().list(), new ClickChecker());
         recycler.setAdapter(mAdapter);
         recycler.setLayoutManager(mLayout);
     }
@@ -85,10 +85,17 @@ public class fragmentList extends Fragment implements View.OnClickListener{
             return 3;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
+
+        savedInstanceState.putInt(FL_TAG, ItemRep.getInstance().list().size());
+    }
+
     class ClickChecker implements ViewHolder.IListener{
         @Override
         public void onClicked(int position){
-            final item item = itemRep.getInstance().item(position);
+            final Item item = ItemRep.getInstance().item(position);
 
             if (mListener != null) {
                 mListener.onClicked(item);

@@ -33,7 +33,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(clickListener);
     }
 
-    void bind(item item) {
+    void bind(Item item) {
 
         mName.setText(item.name);
 

@@ -13,16 +13,16 @@ import androidx.fragment.app.DialogFragment;
 
 import java.io.Serializable;
 
-public class fragmentDetails extends DialogFragment {
+public class FragmentDetails extends DialogFragment {
 
     protected static final String KEY = "KEY";
 
-    public static fragmentDetails newInstance(item item) {
+    public static FragmentDetails newInstance(Item item) {
 
         final Bundle extras = new Bundle();
         extras.putSerializable(KEY, item);
 
-        final fragmentDetails fragment = new fragmentDetails();
+        final FragmentDetails fragment = new FragmentDetails();
         fragment.setArguments(extras);
 
         return fragment;
@@ -38,7 +38,7 @@ public class fragmentDetails extends DialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final item item = info();
+        final Item item = info();
         if (item != null) {
 
             ((TextView) view.findViewById(R.id.name)).setText(item.name);
@@ -57,16 +57,14 @@ public class fragmentDetails extends DialogFragment {
             }
         }
     }
-    public item info(){
+    public Item info(){
         if (getArguments() == null) {
             return null;
         }
 
         final Serializable droid = getArguments().getSerializable(KEY);
-        if (droid instanceof item) {
-            return (item) getArguments().getSerializable(KEY);
-        }
 
-        return null;
+        return (Item) droid;
+
     }
 }

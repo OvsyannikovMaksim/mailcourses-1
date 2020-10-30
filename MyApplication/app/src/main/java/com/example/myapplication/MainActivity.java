@@ -3,8 +3,9 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
-public class MainActivity extends AppCompatActivity implements fragmentList.IListener{
+public class MainActivity extends AppCompatActivity implements FragmentList.IListener{
 
     private static final int DEFAULT_INDEX = 0;
     private static final String KEY = "KEY";
@@ -19,22 +20,25 @@ public class MainActivity extends AppCompatActivity implements fragmentList.ILis
         final boolean isDual = getResources().getBoolean(R.bool.is_dual);
 
         if (savedInstanceState == null) {
+            Log.d("123123!!!","If savedInstanceState fragment == null");
             if (isDual) {
-                final item droid = itemRep.getInstance().item(DEFAULT_INDEX);
+                final Item droid = ItemRep.getInstance().item(DEFAULT_INDEX);
                 showDetails(droid);
             }
         }
+        else{
+            Log.d("123123!!!","If savedInstanceState fragment != null");
+        }
     }
 
-
-    protected void showDetails(item item) {
+    protected void showDetails(Item item) {
         if (item == null) {
 
             return;
         }
 
 
-        final fragmentDetails detailsFragment = fragmentDetails.newInstance(item);
+        final FragmentDetails detailsFragment = FragmentDetails.newInstance(item);
 
         final boolean isDual = getResources().getBoolean(R.bool.is_dual);
         if (isDual) {
@@ -51,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements fragmentList.ILis
 
 
     @Override
-    public void onClicked(item item) {
+    public void onClicked(Item item) {
         showDetails(item);
     }
 }

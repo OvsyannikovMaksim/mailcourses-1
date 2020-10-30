@@ -3,22 +3,27 @@ package com.example.myapplication;
 import java.util.ArrayList;
 import java.util.List;
 
-public class itemRep {
+public class ItemRep {
 
-    public static List<item> mData = new ArrayList<>();;
-    private static volatile itemRep mInstance;
+    private static final int Amount = 100;
+
+    public static List<Item> mData = new ArrayList<>();;
+    private static volatile ItemRep mInstance;
 
     // конструктор класса
-    private itemRep() {
-        mData = initializeData();
+    private ItemRep() {
+        mData = initializeData(Amount);
+    }
+    private ItemRep(int num) {
+        mData = initializeData(num);
     }
 
     // получение состояние класса
-    public static itemRep getInstance() {
+    public static ItemRep getInstance() {
         if (mInstance == null) {
-            synchronized (itemRep.class) {
+            synchronized (ItemRep.class) {
                 if (mInstance == null) {
-                    mInstance = new itemRep();
+                    mInstance = new ItemRep();
                 }
             }
         }
@@ -27,19 +32,19 @@ public class itemRep {
 
 
     // получить список элементов
-    public List<item> list() {
+    public List<Item> list() {
         return mData;
     }
 
     // получить элемент по индексу
-    public item item(int index) {
+    public Item item(int index) {
         return mData.get(index);
     }
 
     public static void add(){
         int num = mData.size()+1;
         int colour = num%2 == 0 ? 0: 1;
-        final item item = new item();
+        final Item item = new Item();
         item.name = "" + num;
         item.colour = colour;
 
@@ -47,10 +52,10 @@ public class itemRep {
     }
 
     // инициализация списка элементов по правилам: цвет четного красный(0), нечетного синий (1)
-    protected List<item> initializeData(){
-        final List<item> data = new ArrayList<>();
+    protected List<Item> initializeData(int Amount){
+        final List<Item> data = new ArrayList<>();
 
-        for(int position = 1; position<=100; position++) {
+        for(int position = 1; position<=Amount; position++) {
 
             String name = "" + position;
             final int colour;
@@ -60,7 +65,7 @@ public class itemRep {
                 colour = 0;
             }
 
-            final item item = new item();
+            final Item item = new Item();
             item.name = name;
             item.colour = colour;
 

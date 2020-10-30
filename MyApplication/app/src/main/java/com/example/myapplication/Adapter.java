@@ -10,11 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<ViewHolder> {
-    protected final List<item> mData;
+    protected final List<Item> mData;
     protected final ViewHolder.IListener mListener;
 
 
-    public Adapter(List<item> data, ViewHolder.IListener listener) {
+    public Adapter(List<Item> data, ViewHolder.IListener listener) {
         mListener = listener;
         mData = data;
     }
@@ -31,7 +31,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder (@NonNull ViewHolder holder, int position){
 
-        final item item = mData.get(position);
+        final Item item = mData.get(position);
         holder.bind(item);
 
     }
