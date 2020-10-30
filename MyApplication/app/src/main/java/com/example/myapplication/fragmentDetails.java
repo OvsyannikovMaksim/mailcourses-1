@@ -9,11 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 
 import java.io.Serializable;
 
-public class FragmentDetails extends DialogFragment {
+public class FragmentDetails extends Fragment {
 
     protected static final String KEY = "KEY";
 

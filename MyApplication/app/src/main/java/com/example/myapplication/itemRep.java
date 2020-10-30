@@ -25,7 +25,6 @@ public class ItemRep {
         if (mInstance == null) {
             synchronized (ItemRep.class) {
                 if (mInstance == null) {
-                    Log.d("123123!!!","хере1");
                     mInstance = new ItemRep();
                 }
             }
@@ -33,7 +32,7 @@ public class ItemRep {
         return mInstance;
     }
 
-    public static void newInstance(int num){
+    public static void setInstance(int num){
         mInstance = new ItemRep(num);
     }
 

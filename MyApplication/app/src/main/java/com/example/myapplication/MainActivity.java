@@ -8,8 +8,7 @@ import android.util.Log;
 public class MainActivity extends AppCompatActivity implements FragmentList.IListener{
 
 
-    protected static final String TAG_DETAILS_DIALOG = "TAG_DETAILS_DIALOG";
-    protected static final String FL_TAG = "FL_TAG";
+    protected static final String TAG_DETAILS= "DETAILS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +20,11 @@ public class MainActivity extends AppCompatActivity implements FragmentList.ILis
     protected void showDetails(Item item) {
 
         final FragmentDetails detailsFragment = FragmentDetails.newInstance(item);
-        detailsFragment.show(getSupportFragmentManager(), TAG_DETAILS_DIALOG);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.data, detailsFragment, TAG_DETAILS)
+                .addToBackStack(null)
+                .commit();
 
     }
 

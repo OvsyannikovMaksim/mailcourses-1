@@ -65,18 +65,13 @@ public class FragmentList extends Fragment implements View.OnClickListener{
         final RecyclerView recycler = view.findViewById(R.id.recycler);
 
         GridLayoutManager mLayout = new GridLayoutManager(getActivity(), getScreenOrientation(), LinearLayoutManager.VERTICAL, false);
-        mAdapter=new Adapter(ItemRep.getInstance().list(), new ClickChecker());
         if (savedInstanceState!=null){
             int amount = savedInstanceState.getInt(FL_TAG);
-            ItemRep.newInstance(amount);
-            mAdapter.notifyDataSetChanged();
-            recycler.setAdapter(mAdapter);
-            recycler.setLayoutManager(mLayout);
+            ItemRep.setInstance(amount);
         }
-        else {
-            recycler.setAdapter(mAdapter);
-            recycler.setLayoutManager(mLayout);
-        }
+        mAdapter=new Adapter(ItemRep.getInstance().list(), new ClickChecker());
+        recycler.setAdapter(mAdapter);
+        recycler.setLayoutManager(mLayout);
     }
 
     @Override
