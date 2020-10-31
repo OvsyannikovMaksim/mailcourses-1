@@ -15,6 +15,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
 
 
     public Adapter(List<Item> data, ViewHolder.IListener listener) {
+        
         mListener = listener;
         mData = data;
     }
