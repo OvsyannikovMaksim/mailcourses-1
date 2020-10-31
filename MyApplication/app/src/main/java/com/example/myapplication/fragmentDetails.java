@@ -68,7 +68,7 @@ public class FragmentDetails extends Fragment {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle savedInstanceState){
+    public void onSaveInstanceState(@NonNull Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putInt(FL_TAG, ItemRep.getInstance().size());
     }

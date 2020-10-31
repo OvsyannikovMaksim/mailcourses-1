@@ -3,7 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
+
 
 public class MainActivity extends AppCompatActivity implements FragmentList.IListener{
 
@@ -23,13 +23,7 @@ public class MainActivity extends AppCompatActivity implements FragmentList.ILis
                     .beginTransaction()
                     .replace(R.id.data, ListFragment, TAG_LIST)
                     .commit();
-            Log.d("KFKDKDKD", "savedInstanceState==null");
         }
-        else
-        {
-            Log.d("KFKDKDKD", "savedInstanceState!=null");
-        }
-
     }
 
     protected void showDetails(Item item) {
@@ -42,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements FragmentList.ILis
                 .commit();
 
     }
-
 
     @Override
     public void onClicked(Item item) {

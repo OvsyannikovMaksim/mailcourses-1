@@ -1,7 +1,5 @@
 package com.example.myapplication;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +7,7 @@ public class ItemRep {
 
     private static final int Amount = 100;
 
-    public static List<Item> mData = new ArrayList<>();;
+    public static List<Item> mData = new ArrayList<>();
     private static volatile ItemRep mInstance;
 
     // конструктор класса

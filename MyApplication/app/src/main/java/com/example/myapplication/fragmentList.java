@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +29,7 @@ public class FragmentList extends Fragment implements View.OnClickListener{
 
     public interface IListener{
 
-        public void onClicked(Item item);
+        void onClicked(Item item);
 
     }
 
@@ -91,7 +90,7 @@ public class FragmentList extends Fragment implements View.OnClickListener{
     }
 
     @Override
-    public void onSaveInstanceState(Bundle savedInstanceState){
+    public void onSaveInstanceState(@NonNull Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putInt(FL_TAG, ItemRep.getInstance().size());
     }

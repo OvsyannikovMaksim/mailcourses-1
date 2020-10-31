@@ -23,12 +23,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         mListener = listener;
         mName = itemView.findViewById(R.id.name);
 
-        final View.OnClickListener clickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mListener.onClicked(getAdapterPosition());
-            }
-        };
+        final View.OnClickListener clickListener = v -> mListener.onClicked(getAdapterPosition());
 
         itemView.setOnClickListener(clickListener);
     }

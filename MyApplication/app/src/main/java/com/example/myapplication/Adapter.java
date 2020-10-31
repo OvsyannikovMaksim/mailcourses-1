@@ -19,6 +19,7 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         mData = data;
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
 
