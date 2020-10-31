@@ -16,6 +16,7 @@ import java.io.Serializable;
 public class FragmentDetails extends Fragment {
 
     protected static final String KEY = "KEY";
+    protected static final String FL_TAG = "FL_TAG";
 
     public static FragmentDetails newInstance(Item item) {
 
@@ -63,8 +64,12 @@ public class FragmentDetails extends Fragment {
         }
 
         final Serializable droid = getArguments().getSerializable(KEY);
-
         return (Item) droid;
+    }
 
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt(FL_TAG, ItemRep.getInstance().size());
     }
 }
